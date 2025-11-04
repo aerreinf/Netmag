@@ -1,0 +1,110 @@
+object fAttivitaDB: TfAttivitaDB
+  Left = 226
+  Top = 103
+  BorderStyle = bsDialog
+  Caption = 'Attivit'#224
+  ClientHeight = 250
+  ClientWidth = 370
+  Color = clBtnFace
+  Font.Charset = DEFAULT_CHARSET
+  Font.Color = clWindowText
+  Font.Height = -11
+  Font.Name = 'MS Sans Serif'
+  Font.Style = []
+  OldCreateOrder = False
+  Position = poScreenCenter
+  PixelsPerInch = 96
+  TextHeight = 13
+  object paCtrl: TPanel
+    Left = 0
+    Top = 0
+    Width = 370
+    Height = 41
+    Align = alTop
+    BevelInner = bvLowered
+    Color = clWhite
+    TabOrder = 0
+    object dbnTab_Attivita: TDBNavigator
+      Left = 8
+      Top = 8
+      Width = 224
+      Height = 25
+      DataSource = dmodPub.dsoTab_Attivita
+      VisibleButtons = [nbInsert, nbEdit, nbPost, nbCancel]
+      Flat = True
+      TabOrder = 0
+    end
+  end
+  object paView: TPanel
+    Left = 0
+    Top = 41
+    Width = 370
+    Height = 209
+    Align = alClient
+    BevelOuter = bvLowered
+    Color = 16744448
+    TabOrder = 1
+    object laCodice: TLabel
+      Left = 16
+      Top = 20
+      Width = 38
+      Height = 14
+      Caption = 'Codice'
+      Font.Charset = ANSI_CHARSET
+      Font.Color = clWhite
+      Font.Height = -11
+      Font.Name = 'Arial'
+      Font.Style = [fsBold]
+      ParentFont = False
+    end
+    object laDescr: TLabel
+      Left = 16
+      Top = 48
+      Width = 65
+      Height = 14
+      Caption = 'Descrizione'
+      Font.Charset = ANSI_CHARSET
+      Font.Color = clWhite
+      Font.Height = -11
+      Font.Name = 'Arial'
+      Font.Style = [fsBold]
+      ParentFont = False
+    end
+    object dbeCodice: TDBEdit
+      Left = 60
+      Top = 16
+      Width = 61
+      Height = 20
+      CharCase = ecUpperCase
+      Ctl3D = False
+      DataField = 'CODICE'
+      DataSource = dmodPub.dsoTab_Attivita
+      Font.Charset = ANSI_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -11
+      Font.Name = 'Arial'
+      Font.Style = []
+      ParentCtl3D = False
+      ParentFont = False
+      TabOrder = 0
+      OnKeyPress = dbeCodiceKeyPress
+    end
+    object dbmDescr: TDBMemo
+      Left = 16
+      Top = 64
+      Width = 337
+      Height = 129
+      DataField = 'DESCR'
+      DataSource = dmodPub.dsoTab_Attivita
+      Font.Charset = ANSI_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -11
+      Font.Name = 'Arial'
+      Font.Style = []
+      ParentFont = False
+      ScrollBars = ssVertical
+      TabOrder = 1
+      OnKeyPress = dbmDescrKeyPress
+    end
+  end
+end
