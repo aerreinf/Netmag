@@ -1,0 +1,211 @@
+unit uAnagAz;
+
+interface
+
+uses
+  Windows, Messages, SysUtils, Classes, Graphics, Controls, Forms, Dialogs,
+  uBaseForm3, Db, ExtCtrls, DBCtrls, StdCtrls, Mask, ComCtrls, ToolWin;
+
+type
+  TfAnagAz = class(TfBaseForm3)
+    paBack: TPanel;
+    pctrlAnag: TPageControl;
+    tabs1: TTabSheet;
+    paDatiAnag: TPanel;
+    laCodAz: TLabel;
+    laCodFisc: TLabel;
+    laPartitaIVA: TLabel;
+    laRagSoc: TLabel;
+    laTitolo: TLabel;
+    laDataDiNasc: TLabel;
+    laCodISO: TLabel;
+    laNazione: TLabel;
+    laComuneDiNasc: TLabel;
+    laCognome: TLabel;
+    laNome: TLabel;
+    laSesso: TLabel;
+    laCAPdiNasc: TLabel;
+    dbeCodAz: TDBEdit;
+    dbeCodFisc: TDBEdit;
+    dbePartIVA: TDBEdit;
+    dbeRagSoc: TDBEdit;
+    LookTitolo: TDBLookupComboBox;
+    dbeCognome: TDBEdit;
+    LookCodISO: TDBLookupComboBox;
+    LookNazione: TDBLookupComboBox;
+    dbeNome: TDBEdit;
+    LookComune: TDBLookupComboBox;
+    dbeDataDiNascita: TDBEdit;
+    LookSesso: TDBLookupComboBox;
+    LookCAPdiNasc: TDBLookupComboBox;
+    tabs2: TTabSheet;
+    paIndA: TPanel;
+    gboxSedeA1: TGroupBox;
+    laIndA1: TLabel;
+    laComuneA1: TLabel;
+    laNazioneA1: TLabel;
+    laFaxA1: TLabel;
+    laInternetA1: TLabel;
+    laEMailA1: TLabel;
+    laTel1A1: TLabel;
+    laTel2A1: TLabel;
+    laCAPA1: TLabel;
+    laProvA1: TLabel;
+    dbeIndirizzo_A1: TDBEdit;
+    LookNazione_A1: TDBLookupComboBox;
+    dbeFax_A1: TDBEdit;
+    dbeInternet_A1: TDBEdit;
+    dbeEMail_A1: TDBEdit;
+    dbeTel1_A1: TDBEdit;
+    LookComune_A1: TDBLookupComboBox;
+    dbeTel2_A1: TDBEdit;
+    LookCAPA1: TDBLookupComboBox;
+    LookProvA1: TDBLookupComboBox;
+    gboxDomFiscA2: TGroupBox;
+    Label2: TLabel;
+    Label3: TLabel;
+    Label4: TLabel;
+    Label5: TLabel;
+    Label6: TLabel;
+    Label7: TLabel;
+    Label10: TLabel;
+    Label11: TLabel;
+    laCAPA2: TLabel;
+    laProvA2: TLabel;
+    dbeIndirizzo_A2: TDBEdit;
+    LookComune_A2: TDBLookupComboBox;
+    dbeTel1_A2: TDBEdit;
+    dbeEMail_A2: TDBEdit;
+    dbeInternet_A2: TDBEdit;
+    dbeTel2_A2: TDBEdit;
+    LookNazione_A2: TDBLookupComboBox;
+    dbeFax_A2: TDBEdit;
+    LookCAPA2: TDBLookupComboBox;
+    LookProvA2: TDBLookupComboBox;
+    tabs3: TTabSheet;
+    paIndB: TPanel;
+    gboxUbicDiAttivA3: TGroupBox;
+    Label12: TLabel;
+    laCAPB1: TLabel;
+    Label14: TLabel;
+    Label15: TLabel;
+    Label16: TLabel;
+    Label20: TLabel;
+    Label21: TLabel;
+    Label8: TLabel;
+    laProvB1: TLabel;
+    dbeIndirizzo_B1: TDBEdit;
+    LookComune_B1: TDBLookupComboBox;
+    dbeTel1_B1: TDBEdit;
+    dbeEMail_B1: TDBEdit;
+    dbeInternet_B1: TDBEdit;
+    LookNazione_B1: TDBLookupComboBox;
+    dbeFax_B1: TDBEdit;
+    LookCAPB1: TDBLookupComboBox;
+    LookProvB1: TDBLookupComboBox;
+    gboxDeposDep: TGroupBox;
+    laIndB2: TLabel;
+    laIndB2Comune: TLabel;
+    laIndB2Nazione: TLabel;
+    laIndB2Tel: TLabel;
+    laIndB2Fax: TLabel;
+    laIndB2RagSoc: TLabel;
+    laIndB2CodFisc: TLabel;
+    laIndB2PartitaIVA: TLabel;
+    laIndB2Nome: TLabel;
+    laCAPDep: TLabel;
+    laProvDep: TLabel;
+    dbeCodFiscDep: TDBEdit;
+    dbePartIVADep: TDBEdit;
+    dbeCognomeDep: TDBEdit;
+    dbeNomeDep: TDBEdit;
+    dbeIndDep: TDBEdit;
+    LookComuneDep: TDBLookupComboBox;
+    LookNazioneDep: TDBLookupComboBox;
+    dbeTelDep: TDBEdit;
+    dbeFaxDep: TDBEdit;
+    dbcboxTenutaParzialeDep: TDBCheckBox;
+    LookCAPDep: TDBLookupComboBox;
+    LookProvDep: TDBLookupComboBox;
+    tabs4: TTabSheet;
+    paAttivita: TPanel;
+    laAttCodice: TLabel;
+    laAttDescr: TLabel;
+    gboxCCIAA: TGroupBox;
+    laCCIAAComune: TLabel;
+    laCCIAARegImp: TLabel;
+    laCCIAAREA: TLabel;
+    laCCIAADataIscr: TLabel;
+    laCAPCCIAA: TLabel;
+    laProvCCIAA: TLabel;
+    gbozAltriDati: TGroupBox;
+    laADDataCost: TLabel;
+    laADTermLeg: TLabel;
+    laADDataAppBil: TLabel;
+    laADDataTerm: TLabel;
+    laADCapSoc: TLabel;
+    dbeCapitaleSociale: TDBEdit;
+    dbeDataCost: TDBEdit;
+    dbeDataAppBil: TDBEdit;
+    dbeDataTermLegCCIAA: TDBEdit;
+    dbeDataTermCCIAA: TDBEdit;
+    dbcboxInterversCCIAA: TDBCheckBox;
+    dbeNumRegImpesa: TDBEdit;
+    dbeNREA: TDBEdit;
+    LookComuneCCIAA: TDBLookupComboBox;
+    dbeDataIscrREA: TDBEdit;
+    LookCAPCCIAA: TDBLookupComboBox;
+    LookProvCCIAA: TDBLookupComboBox;
+    LookAttivitaID: TDBLookupComboBox;
+    LookAttivitaDescr: TDBLookupComboBox;
+    dbragTipoImpresa: TDBRadioGroup;
+    dbragRegCont: TDBRadioGroup;
+    dbcboxAttArtigian: TDBCheckBox;
+    dbcboxAttStagion: TDBCheckBox;
+    dbcboxBaseUnica: TDBCheckBox;
+    dbcboxPiuAttivita: TDBCheckBox;
+    tabs5: TTabSheet;
+    paDatiFisc: TPanel;
+    laUffIVA: TLabel;
+    laEsattoria: TLabel;
+    laNatGiur: TLabel;
+    laStatSoc: TLabel;
+    laSituazSoc: TLabel;
+    laCodConces: TLabel;
+    laNContoFisc: TLabel;
+    Label1: TLabel;
+    laCodSIA: TLabel;
+    laDataAutor: TLabel;
+    laProvIndDiFinan: TLabel;
+    laNAutor: TLabel;
+    dbeEsattoria: TDBEdit;
+    dbeUfficioIVA: TDBEdit;
+    dbeCodiceSIA: TDBEdit;
+    dbeCodiceConcessione: TDBEdit;
+    dbeNContoFiscale: TDBEdit;
+    LookSedeINPSCod: TDBLookupComboBox;
+    LookSeseINPSDescr: TDBLookupComboBox;
+    LookNatGiurCod: TDBLookupComboBox;
+    LookNatGiurDescr: TDBLookupComboBox;
+    dbeProvIntFin: TDBEdit;
+    dbeNumAutor: TDBEdit;
+    dbcboxBolliVirtuali: TDBCheckBox;
+    dbeSituazioneSocieta: TDBEdit;
+    dbeStatoSocieta: TDBEdit;
+    dbragTipoRegione: TDBRadioGroup;
+    dbeDataAutor: TDBEdit;
+    dsoAngAz: TDataSource;
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  fAnagAz: TfAnagAz;
+
+implementation
+
+{$R *.DFM}
+
+end.
